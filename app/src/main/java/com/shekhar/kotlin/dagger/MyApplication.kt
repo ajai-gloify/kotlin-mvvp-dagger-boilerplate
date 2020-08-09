@@ -22,10 +22,10 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        getDependencies()
+        injectDependencies()
     }
 
-    private fun getDependencies() {
+    private fun injectDependencies() {
         applicationComponent = DaggerApplicationComponent
                 .builder()
                 .applicationModule(ApplicationModule(this))
