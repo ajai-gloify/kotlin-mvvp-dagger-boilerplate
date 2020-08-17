@@ -1,12 +1,13 @@
-package com.shekhar.kotlin.dagger.data.local
+package com.shekhar.kotlin.dagger.data.local.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.shekhar.kotlin.dagger.data.local.dao.AddressDao
-import com.shekhar.kotlin.dagger.data.local.dao.UserDao
-import com.shekhar.kotlin.dagger.data.local.entity.Address
-import com.shekhar.kotlin.dagger.data.local.entity.User
+import com.shekhar.kotlin.dagger.data.local.db.Converter
+import com.shekhar.kotlin.dagger.data.local.db.dao.AddressDao
+import com.shekhar.kotlin.dagger.data.local.db.dao.UserDao
+import com.shekhar.kotlin.dagger.data.local.db.entity.Address
+import com.shekhar.kotlin.dagger.data.local.db.entity.User
 
 
 @Database(entities = [

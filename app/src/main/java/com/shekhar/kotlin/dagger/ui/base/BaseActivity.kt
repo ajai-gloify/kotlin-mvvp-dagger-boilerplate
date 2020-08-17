@@ -10,6 +10,7 @@ import com.shekhar.kotlin.dagger.MyApplication
 import com.shekhar.kotlin.dagger.di.component.ActivityComponent
 import com.shekhar.kotlin.dagger.di.component.DaggerActivityComponent
 import com.shekhar.kotlin.dagger.di.module.ActivityModule
+import com.shekhar.kotlin.dagger.utils.display.Toaster
 import javax.inject.Inject
 
 abstract class BaseActivity<VM :BaseViewModel> :AppCompatActivity(){
@@ -31,10 +32,10 @@ abstract class BaseActivity<VM :BaseViewModel> :AppCompatActivity(){
     protected open fun setupObserver()
     {
         viewModel.messageString.observe(this, Observer {
-            showMessage(it)
+            it.data?.run { showMessage(this) }
         })
         viewModel.messageStringId.observe(this, Observer {
-            showMessageId(it)
+            it.data?.run { showMessage(this) }
         })
     }
 
@@ -46,9 +47,9 @@ abstract class BaseActivity<VM :BaseViewModel> :AppCompatActivity(){
                     .build()
 
 
-    fun showMessage(message:String) = Toast.makeText(applicationContext,message,Toast.LENGTH_SHORT).show()
+    fun showMessage(message: String) = Toaster.show(applicationContext, message)
 
-    fun showMessageId(@StringRes resId:Int) = showMessage(getString(resId))
+    fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
 
 
     @LayoutRes

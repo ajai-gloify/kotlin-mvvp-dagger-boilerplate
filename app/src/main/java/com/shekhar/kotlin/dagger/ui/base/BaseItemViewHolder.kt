@@ -15,6 +15,7 @@ import com.shekhar.kotlin.dagger.MyApplication
 import com.shekhar.kotlin.dagger.di.component.DaggerViewHolderComponent
 import com.shekhar.kotlin.dagger.di.component.ViewHolderComponent
 import com.shekhar.kotlin.dagger.di.module.ViewHolderModule
+import com.shekhar.kotlin.dagger.utils.display.Toaster
 import javax.inject.Inject
 
 abstract class BaseItemViewHolder<T: Any, VM :BaseItemViewModel<T>>(
@@ -77,17 +78,17 @@ abstract class BaseItemViewHolder<T: Any, VM :BaseItemViewModel<T>>(
     protected open fun setupObserver()
     {
         viewModel.messageString.observe(this, Observer {
-            showMessage(it)
+            it.data?.run { showMessage(this) }
         })
+
         viewModel.messageStringId.observe(this, Observer {
-            showMessageId(it)
+            it.data?.run { showMessage(this) }
         })
     }
 
+    fun showMessage(message: String) = Toaster.show(itemView.context, message)
 
-    fun showMessage(message:String) = Toast.makeText(itemView.context ,message, Toast.LENGTH_SHORT).show()
-
-    fun showMessageId(@StringRes resId:Int) = showMessage(itemView.context.getString(resId))
+    fun showMessage(@StringRes resId: Int) = showMessage(itemView.context.getString(resId))
 
     protected abstract fun setupView(view: View)
 

@@ -2,7 +2,7 @@ package com.shekhar.kotlin.dagger
 
 import android.app.Application
 
-import com.shekhar.kotlin.dagger.data.local.DatabaseService
+import com.shekhar.kotlin.dagger.data.local.db.DatabaseService
 import com.shekhar.kotlin.dagger.data.remote.NetworkService
 import com.shekhar.kotlin.dagger.di.component.ApplicationComponent
 import com.shekhar.kotlin.dagger.di.component.DaggerApplicationComponent

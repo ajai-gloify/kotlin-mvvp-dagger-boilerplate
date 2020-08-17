@@ -7,7 +7,8 @@ import com.shekhar.kotlin.dagger.ui.home.HomeFragment
 import dagger.Component
 
 @FragmentScope
-@Component(dependencies = [ApplicationComponent::class], modules = [FragmentModule::class])
+@Component(dependencies = [ApplicationComponent::class],
+        modules = [FragmentModule::class])
 interface FragmentComponent {
 
     fun inject(fragment: HomeFragment)

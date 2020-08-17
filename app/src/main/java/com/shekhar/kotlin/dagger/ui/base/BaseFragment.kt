@@ -13,6 +13,7 @@ import com.shekhar.kotlin.dagger.MyApplication
 import com.shekhar.kotlin.dagger.di.component.DaggerFragmentComponent
 import com.shekhar.kotlin.dagger.di.component.FragmentComponent
 import com.shekhar.kotlin.dagger.di.module.FragmentModule
+import com.shekhar.kotlin.dagger.utils.display.Toaster
 import javax.inject.Inject
 
 abstract class BaseFragment <VM: BaseViewModel> : Fragment() {
@@ -45,10 +46,11 @@ abstract class BaseFragment <VM: BaseViewModel> : Fragment() {
     protected open fun setupObserver()
     {
         viewModel.messageString.observe(this, Observer {
-            showMessage(it)
+            it.data?.run { showMessage(this) }
         })
+
         viewModel.messageStringId.observe(this, Observer {
-            showMessageId(it)
+            it.data?.run { showMessage(this) }
         })
     }
 
@@ -60,9 +62,10 @@ abstract class BaseFragment <VM: BaseViewModel> : Fragment() {
                     .build()
 
 
-    fun showMessage(message:String) = Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
 
-    fun showMessageId(@StringRes resId:Int) = showMessage(getString(resId))
+    fun showMessage(message: String) = context?.let { Toaster.show(it, message) }
+
+    fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
 
 
     @LayoutRes

@@ -1,4 +1,4 @@
-package com.shekhar.kotlin.dagger.data.local
+package com.shekhar.kotlin.dagger.data.local.db
 
 import androidx.room.TypeConverter
 import java.util.*

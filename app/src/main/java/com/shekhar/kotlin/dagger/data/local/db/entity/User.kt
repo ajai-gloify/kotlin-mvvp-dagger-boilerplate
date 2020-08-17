@@ -1,4 +1,4 @@
-package com.shekhar.kotlin.dagger.data.local.entity
+package com.shekhar.kotlin.dagger.data.local.db.entity
 
 import androidx.room.*
 import java.util.*

@@ -1,13 +1,15 @@
 package com.shekhar.kotlin.dagger.ui.base
 
 import androidx.lifecycle.MutableLiveData
-import com.shekhar.kotlin.dagger.utils.NetworkHelper
+import com.shekhar.kotlin.dagger.utils.network.NetworkHelper
+import com.shekhar.kotlin.dagger.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseItemViewModel<T: Any>(
+        schedulerProvider: SchedulerProvider,
         compositeDisposable: CompositeDisposable,
         networkHelper: NetworkHelper
-) :BaseViewModel(compositeDisposable, networkHelper){
+) :BaseViewModel(schedulerProvider,compositeDisposable, networkHelper){
 
     val data = MutableLiveData<T> ()
 

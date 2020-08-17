@@ -2,5 +2,7 @@ package com.shekhar.kotlin.dagger.data.remote
 
 object Endpoints {
 
-    const val LOGIN = "v1/users/login"
+    const val LOGIN = "login/mindorks"
+    const val SIGNUP = "signup/mindorks"
+    const val DUMMY = "dummy/list"
 }
